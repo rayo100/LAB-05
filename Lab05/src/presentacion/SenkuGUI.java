@@ -120,27 +120,16 @@ public class SenkuGUI extends JFrame {
         panelMenu.add(LoadGame);
         panelMenu.add(SalirGame);
     }
-
-    /**
-     * Inicializa el explorador de archivos y el escogedor de colpr
-     */
     private void prepareElementosChooser() {
         fileChooser = new JFileChooser();
     }
 
-    /**
-     * Metodo para cerrar el JFrame correctamente, antes de cerrarlo le pregunta al usuario si esta seguro de su eleccion
-     */
     private void salga() {
         if (JOptionPane.showConfirmDialog(rootPane, "Desea realmente salir del sistema?",
                 "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }
-
-    /**
-     * Metodo para abrir un nuevo archivo
-     */
     private void abrir() {
         int action = fileChooser.showOpenDialog(abrir);
         if (action == JFileChooser.APPROVE_OPTION) {
@@ -148,10 +137,6 @@ public class SenkuGUI extends JFrame {
             JOptionPane.showMessageDialog(null, "Archivo cargado: " + archivo.getName() + "\nFuncionalidad Salvar en construccion");
         }
     }
-
-    /**
-     * Abre el explorador de archivos para salvar el archivo
-     */
     private void salvar() {
         int action = fileChooser.showSaveDialog(salvar);
         if (action == JFileChooser.APPROVE_OPTION) {
@@ -159,19 +144,11 @@ public class SenkuGUI extends JFrame {
             JOptionPane.showMessageDialog(null, "Archivo guardado: " + archivo.getName() + "\nFuncionalidad Salvar en construccion");
         }
     }
-
-    /**
-     * Inicia el juego, oculta la ventana principal y deja ver la ventana del juego
-     */
     private void prepareElementosTablero() {
         tablero.setVisible(true);
         add(tablero);
         mainPanel.setVisible(false);
     }
-
-    /**
-     * Prepara los botones usados en configuracion
-     */
     private void prepareElementosConfiguracion(){
         panelConfiguracion = new JPanel();
         panelConfiguracion.setLayout(null);
@@ -188,29 +165,17 @@ public class SenkuGUI extends JFrame {
         panelConfiguracion.add(colorPaneles);
         panelConfiguracion.add(salirConfiguracion);
     }
-
-    /**
-     * Funcionalidad Para configuracion
-     */
     private void configuracion(){
         panelConfiguracion.setVisible(true);
         panelConfiguracion.setBackground(Color.black);
         add(panelConfiguracion);
         tablero.setVisible(false);
     }
-
-    /**
-     * Funcionalidad Para volver de configuracion
-     */
     private void volverdeConfiguraciones(){
         panelConfiguracion.setVisible(false);
         tablero.setVisible(true);
         tablero.refresque();
     }
-
-    /**
-     * Funcionalidad Para cambiar color de Botones
-     */
     private void botonColorBotones(){
         Color color = JColorChooser.showDialog(panelConfiguracion, "Elija un color", Color.BLACK);
         if (color.equals(Color.white)) {
@@ -218,26 +183,14 @@ public class SenkuGUI extends JFrame {
         }
         else tablero.setColor(color);
     }
-
-    /**
-     * Funcionalidad Para cambiar color de paneles
-     */
     private void botonColorPaneles(){
         Color color = JColorChooser.showDialog(panelConfiguracion, "Elija un color", Color.BLACK);
         tablero.setColorPaneles(color);
     }
-
-    /**
-     * Funcionalidad Para cambiar color de fondo
-     */
     private void botonColorFondo(){
         Color color = JColorChooser.showDialog(panelConfiguracion, "Elija un color", Color.BLACK);
         tablero.setColorFondo(color);
     }
-
-    /**
-     * Funcion que cambia el tamaño del tablero
-     */
     private void cambiarTamano(){
         try{
             String newSize = JOptionPane.showInputDialog("Seleccione el nuevo tamaño(Solo numeros impares)");
@@ -259,11 +212,6 @@ public class SenkuGUI extends JFrame {
             JOptionPane.showMessageDialog(null,"Digite un Entero");
         }
     }
-
-    /**
-     * Metodo para conocer el tamaño del tablero de la anterior partida
-     * @param size Tamaño del tablero
-     */
     public void setSize(int size) {
         this.size = size;
     }
