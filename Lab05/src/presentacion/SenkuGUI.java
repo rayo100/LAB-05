@@ -105,7 +105,7 @@ public class SenkuGUI extends JFrame {
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 1));
         add(mainPanel);
-        IconSenku = new ImageIcon("senku2.png");
+        IconSenku = new ImageIcon("senku2.jpg");
         JPanel Imagen = new JPanel();
         JLabel label1 = new JLabel(null,IconSenku,SwingConstants.CENTER);
         Imagen.add(label1);
