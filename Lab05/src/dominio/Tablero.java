@@ -1,14 +1,13 @@
-package presentacion;
-
-import dominio.*;
+package dominio;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+
 public class Tablero extends JPanel {
     private final JPanel menuPrincipal;
-    private  int size;
-    private Color colorFicha = Color.blue;
+    private int size;
+    private Color colorFicha = Color.GREEN;
     private Color colorFondo = Color.BLACK;
     private Color colorPaneles = Color.WHITE;
     private JPanel tablero;
@@ -26,6 +25,7 @@ public class Tablero extends JPanel {
     private int BottFi = -1;
     private int BottFj = -1;
     private Senku senku;
+
     public Tablero(int tamano, JPanel menu) throws SenkuException{
         if (tamano%2 == 1 && tamano <= 33) {
             this.size = tamano;
@@ -39,6 +39,7 @@ public class Tablero extends JPanel {
             throw new SenkuException(SenkuException.TAMANO_INVALIDO);
         }
     }
+
     private void prepareElementos(){
         this.setLayout(new BorderLayout(size,size));
         this.setBackground(colorFondo);
@@ -127,6 +128,8 @@ public class Tablero extends JPanel {
         gridPanel.setBackground(Color.WHITE);
         JLabel textMovimientos = new JLabel("MOVIMIENTOS");
         JLabel textFichas = new JLabel("FICHAS CAPTURADAS");
+        textMovimientos.setHorizontalAlignment(SwingConstants.CENTER);
+        textFichas.setHorizontalAlignment(SwingConstants.CENTER);
         moves = new JLabel(Integer.toString(movimientos));
         fichasCap = new JLabel(Integer.toString(fichasCapturadas));
         gridPanel.add(textMovimientos);
@@ -162,7 +165,7 @@ public class Tablero extends JPanel {
         topPanel.add(regresarMenu);
     }
     private void regresarAlMenu(){
-        if (JOptionPane.showConfirmDialog(this.getRootPane(), "Desea regresar al menú? Perderá los datos de esta partida",
+        if (JOptionPane.showConfirmDialog(this.getRootPane(), "¿Desea regresar al menú? Perderá los datos de esta partida",
                 "Regresar al menú", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             this.setVisible(false);
             menuPrincipal.setVisible(true);
